@@ -20,9 +20,10 @@ public class MovePlate : MonoBehaviour
     public void Start()
     {
         if (attack)
-        {
+        {            
             //Set to red
             gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+
         }
     }
 
@@ -35,8 +36,16 @@ public class MovePlate : MonoBehaviour
         {
             GameObject cp = controller.GetComponent<Game>().GetPosition(matrixX, matrixY);
 
-            if (cp.name == "white_king") controller.GetComponent<Game>().Winner("black");
-            if (cp.name == "black_king") controller.GetComponent<Game>().Winner("white");
+            if (cp.name == "white_king")
+            {
+                controller.GetComponent<Game>().Winner("black");
+            }
+
+            if (cp.name == "black_king")
+            {
+                controller.GetComponent<Game>().Winner("white");
+                Debug.Log("Check");
+            }
 
             Destroy(cp);
         }
