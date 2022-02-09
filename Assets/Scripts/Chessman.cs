@@ -13,6 +13,9 @@ public class Chessman : MonoBehaviour
     private int xBoard = -1;
     private int yBoard = -1;
 
+    private bool isBlackPawnFirstMove = true;
+    private bool isWhitePawnFirstMove = true;
+
     //Variable for keeping track of the player it belongs to "black" or "white"
     private string player;
 
@@ -144,10 +147,28 @@ public class Chessman : MonoBehaviour
                 LineMovePlate(0, -1);
                 break;
             case "black_pawn":
-                PawnMovePlate(xBoard, yBoard - 1);
+                if(isBlackPawnFirstMove)
+                {
+                    PawnMovePlate(xBoard, yBoard - 2);
+                    PawnMovePlate(xBoard, yBoard - 1);
+                    isBlackPawnFirstMove = false;
+                }
+                else
+                {
+                    PawnMovePlate(xBoard, yBoard - 1);
+                }
                 break;
             case "white_pawn":
-                PawnMovePlate(xBoard, yBoard + 1);
+                if (isWhitePawnFirstMove)
+                {
+                    PawnMovePlate(xBoard, yBoard + 2);
+                    PawnMovePlate(xBoard, yBoard + 1);
+                    isWhitePawnFirstMove = false;
+                }
+                else
+                {
+                    PawnMovePlate(xBoard, yBoard + 1);
+                }
                 break;
         }
     }
