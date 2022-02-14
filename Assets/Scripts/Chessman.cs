@@ -80,11 +80,15 @@ public class Chessman : MonoBehaviour
     public void SetXBoard(int x)
     {
         xBoard = x;
+
+        Debug.Log(x + " X Coord");
     }
 
     public void SetYBoard(int y)
     {
         yBoard = y;
+
+        Debug.Log(y + " Y Coord");
     }
 
     private void OnMouseUp()

@@ -84,6 +84,8 @@ public class Game : MonoBehaviour
         cm.SetXBoard(x);
         cm.SetYBoard(y);
         cm.Activate(); //It has everything set up so it can now Activate()
+
+        Debug.Log(obj);
         return obj;
     }
     
