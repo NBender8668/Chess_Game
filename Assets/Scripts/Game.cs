@@ -26,26 +26,28 @@ public class Game : MonoBehaviour
     public bool isChess960;
 
     //random 
-    public List<int> whitepositions = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
+    
 
-    public List<int> blackpositons = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
+    List<int> positionlist = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
+    List<int> blackpositons = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
+
 
     //Unity calls this right when the game starts, there are a few built in functions
     //that Unity can call for you
     public void Start()
     {
+        
         if(isChess960)
         {
-            
-            playerWhite = new GameObject[] { Create("white_rook", PickPosition(whitepositions), 0), Create("white_king", PickPosition(whitepositions), 0),
-            Create("white_rook", PickPosition(whitepositions), 0), Create("white_bishop", PickPosition(whitepositions), 0), Create("white_knight", PickPosition(whitepositions), 0),
-            Create("white_knight", PickPosition(whitepositions), 0), Create("white_bishop", PickPosition(whitepositions), 0), Create("white_queen", PickPosition(whitepositions), 0),
+            playerWhite = new GameObject[] { Create("white_bishop", PickPosition(positionlist), 0), Create("white_bishop", PickPosition(positionlist), 0),
+            Create("white_rook",PickPosition(positionlist), 0), Create("white_rook", PickPosition(positionlist), 0), Create("white_king", PickPosition(positionlist), 0),
+            Create("white_knight", PickPosition(positionlist), 0), Create("white_knight", PickPosition(positionlist), 0), Create("white_queen", PickPosition(positionlist), 0),
             Create("white_pawn", 0, 1), Create("white_pawn", 1, 1), Create("white_pawn", 2, 1),
             Create("white_pawn", 3, 1), Create("white_pawn", 4, 1), Create("white_pawn", 5, 1),
             Create("white_pawn", 6, 1), Create("white_pawn", 7, 1) };
-            playerBlack = new GameObject[] { Create("black_rook", PickPosition(blackpositons), 7), Create("black_king",PickPosition(blackpositons),7),
-            Create("black_rook",PickPosition(blackpositons),7), Create("black_bishop",PickPosition(blackpositons),7), Create("black_knight",PickPosition(blackpositons),7),
-            Create("black_knight",PickPosition(blackpositons),7), Create("black_bishop",PickPosition(blackpositons),7), Create("black_queen",PickPosition(blackpositons),7),
+            playerBlack = new GameObject[] { Create("black_bishop", PickPosition(blackpositons), 7), Create("black_bishop",PickPosition(blackpositons),7),
+            Create("black_rook",PickPosition(blackpositons),7), Create("black_rook",PickPosition(blackpositons),7), Create("black_king",PickPosition(blackpositons),7),
+            Create("black_knight",PickPosition(blackpositons),7), Create("black_knight",PickPosition(blackpositons),7), Create("black_queen",PickPosition(blackpositons),7),
             Create("black_pawn", 0, 6), Create("black_pawn", 1, 6), Create("black_pawn", 2, 6),
             Create("black_pawn", 3, 6), Create("black_pawn", 4, 6), Create("black_pawn", 5, 6),
             Create("black_pawn", 6, 6), Create("black_pawn", 7, 6) };
@@ -108,24 +110,20 @@ public class Game : MonoBehaviour
         
     }
 
+    
     public int PickPosition(List<int> list)
     {
         var rand = new System.Random();
         int index = rand.Next(list.Count);
 
+        if (list[index] % 2 == 0)
+        {
+            rand.Next(list.Count);
+        }
+       
         var value = list[index];
 
-        if(list[index] % 2 == 0)
-        {
-            rand.Next(list.Count);
-            list.RemoveAt(index);
-        }
-        else
-        {
-            rand.Next(list.Count);
-            list.RemoveAt(index);
-
-        }
+        list.RemoveAt(index);
 
         Debug.Log(value);
 
@@ -167,7 +165,7 @@ public class Game : MonoBehaviour
             gameOver = false;
 
             //Using UnityEngine.SceneManagement is needed here
-            SceneManager.LoadScene("Game"); //Restarts the game by loading the scene over again
+            SceneManager.LoadScene("MainMenu"); //Restarts the game by loading the scene over again
         }
     }
     

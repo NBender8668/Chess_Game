@@ -423,7 +423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.21677943}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -0.000061035, y: 0.000091553}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &900587651
@@ -504,7 +504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.7783309}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000091552734, y: 0.00012207031}
+  m_AnchoredPosition: {x: -0.00012207031, y: 0.00012207031}
   m_SizeDelta: {x: -0.000061035, y: 0.000061035}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &997083168
@@ -646,6 +646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chesspiece: {fileID: 2692184396404375449, guid: 915e3d2f2d245114d8cfae431dea5f1b,
     type: 3}
+  isChess960: 1
 --- !u!4 &1887524894
 Transform:
   m_ObjectHideFlags: 0
