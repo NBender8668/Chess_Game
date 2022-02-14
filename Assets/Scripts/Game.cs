@@ -70,7 +70,9 @@ public class Game : MonoBehaviour
         for (int i = 0; i < playerBlack.Length; i++)
         {
             SetPosition(playerBlack[i]);
+            Debug.Log(playerBlack[i].transform.position);
             SetPosition(playerWhite[i]);
+            Debug.Log(playerWhite[i].transform.position);
         }
     }
 
