@@ -25,18 +25,14 @@ public class Game : MonoBehaviour
     //Chess960 gamemode
     public bool isChess960;
 
-    //random 
-    
-
     List<int> positionlist = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
-    List<int> blackpositons = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
+    List<int> blackpositons = new List<int>();
 
 
     //Unity calls this right when the game starts, there are a few built in functions
     //that Unity can call for you
     public void Start()
-    {
-        
+    {  
         if(isChess960)
         {
             playerWhite = new GameObject[] { Create("white_bishop", PickPosition(positionlist), 0), Create("white_bishop", PickPosition(positionlist), 0),
@@ -45,9 +41,9 @@ public class Game : MonoBehaviour
             Create("white_pawn", 0, 1), Create("white_pawn", 1, 1), Create("white_pawn", 2, 1),
             Create("white_pawn", 3, 1), Create("white_pawn", 4, 1), Create("white_pawn", 5, 1),
             Create("white_pawn", 6, 1), Create("white_pawn", 7, 1) };
-            playerBlack = new GameObject[] { Create("black_bishop", PickPosition(blackpositons), 7), Create("black_bishop",PickPosition(blackpositons),7),
-            Create("black_rook",PickPosition(blackpositons),7), Create("black_rook",PickPosition(blackpositons),7), Create("black_king",PickPosition(blackpositons),7),
-            Create("black_knight",PickPosition(blackpositons),7), Create("black_knight",PickPosition(blackpositons),7), Create("black_queen",PickPosition(blackpositons),7),
+            playerBlack = new GameObject[] { Create("black_bishop", blackpositons[0], 7), Create("black_bishop",blackpositons[1],7),
+            Create("black_rook",blackpositons[2],7), Create("black_rook",blackpositons[3],7), Create("black_king",blackpositons[4],7),
+            Create("black_knight",blackpositons[5],7), Create("black_knight",blackpositons[6],7), Create("black_queen",blackpositons[7],7),
             Create("black_pawn", 0, 6), Create("black_pawn", 1, 6), Create("black_pawn", 2, 6),
             Create("black_pawn", 3, 6), Create("black_pawn", 4, 6), Create("black_pawn", 5, 6),
             Create("black_pawn", 6, 6), Create("black_pawn", 7, 6) };
@@ -115,14 +111,19 @@ public class Game : MonoBehaviour
     {
         var rand = new System.Random();
         int index = rand.Next(list.Count);
+        var value = list[index];
 
         if (list[index] % 2 == 0)
         {
             rand.Next(list.Count);
         }
-       
-        var value = list[index];
+        else
+        {
+            rand.Next(list.Count);
+        }
 
+        blackpositons.Add(value);
+       
         list.RemoveAt(index);
 
         Debug.Log(value);
